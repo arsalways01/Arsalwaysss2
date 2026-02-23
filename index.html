@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RIZKY STORE REAL - List Diskon</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -15,20 +15,20 @@
 
 body {
     min-height: 100vh;
-    background: #000;
+    background: #0a0a0f; /* fallback color */
     color: #fff;
+    padding: 16px;
     position: relative;
-    overflow-x: hidden;
 }
 
-/* Video Background - full screen tanpa batasan */
+/* Video Background dengan fixed positioning yang benar */
 .video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
 }
 
@@ -42,110 +42,84 @@ body {
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    filter: brightness(0.65) saturate(1.3);
 }
 
-/* Overlay lebih tipis */
+/* Overlay gelap */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(2px);
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
 
-/* Konten utama - full width dengan padding lega */
+/* Konten utama */
 .container {
     position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 100%; /* hilangkan batasan lebar */
-    padding: 20px 16px; /* padding tetap proporsional */
+    z-index: 1;
+    max-width: 800px;
     margin: 0 auto;
 }
 
-/* Header lebih lebar dan proporsional */
 h1 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 22px;
+    margin-bottom: 25px;
+    font-size: 20px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #ffffff;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.4);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    padding: 16px 24px;
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    width: fit-content;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .section {
-    margin-bottom: 35px;
-    width: 100%;
+    margin-bottom: 30px;
 }
 
 .section h2 {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-size: 18px;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.95);
-    padding-left: 8px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    backdrop-filter: blur(5px);
-    display: inline-block;
-    padding-right: 20px;
-}
-
-/* Card dengan ukuran penuh dan proporsional */
-.card {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    border-radius: 28px;
-    padding: 22px 20px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset;
     color: #fff;
-    width: 100%;
-    transition: all 0.2s ease;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    padding-left: 5px;
 }
 
-.card:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.4);
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 18px 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 15px;
-    margin-bottom: 14px;
-    padding: 6px 0;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .item:last-child {
     border-bottom: none;
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .item span:first-child {
     font-weight: 500;
-    opacity: 0.95;
-    flex: 1;
     padding-right: 10px;
 }
 
@@ -153,139 +127,108 @@ h1 {
     text-decoration: line-through;
     opacity: 0.6;
     margin-right: 8px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .new {
-    color: #30ffb0;
+    color: #00ffaa;
     font-weight: 700;
-    font-size: 16px;
-    background: rgba(0, 255, 200, 0.15);
-    padding: 6px 12px;
-    border-radius: 30px;
-    border: 0.5px solid rgba(48, 255, 176, 0.3);
-    display: inline-block;
-    min-width: 65px;
-    text-align: center;
+    font-size: 15px;
+    background: rgba(0, 255, 170, 0.15);
+    padding: 4px 10px;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 255, 170, 0.3);
 }
 
-/* Badge lebih besar dan lega */
 .badge {
     display: inline-block;
-    background: rgba(48, 255, 176, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     color: #fff;
-    padding: 10px 22px;
-    border-radius: 50px;
-    font-size: 14px;
-    margin: 6px 8px 6px 0;
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 13px;
+    margin: 4px 6px 4px 0;
     font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.3px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Note card lebih lega */
 .note {
-    font-size: 15px;
-    line-height: 1.7;
-    opacity: 1;
-    font-weight: 500;
-    background: rgba(255, 59, 48, 0.15);
-    border-left: 5px solid #ff3b30;
-    border-radius: 24px;
-    padding: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    background: rgba(255, 60, 60, 0.15);
+    border-left: 4px solid #ff3b30;
+    border-radius: 16px;
+    padding: 16px;
 }
 
-/* Button besar dan nyaman */
 button {
     width: 100%;
-    padding: 18px 16px;
+    padding: 16px;
     border: none;
-    border-radius: 50px;
-    background: rgba(0, 122, 255, 0.5);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-radius: 30px;
+    background: rgba(0, 122, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
     font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 0.5px;
+    font-size: 16px;
     cursor: pointer;
-    margin-top: 25px;
-    margin-bottom: 10px;
+    margin-top: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.2) inset;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.2s;
 }
 
 button:hover {
-    background: rgba(0, 122, 255, 0.7);
-    backdrop-filter: blur(35px);
+    background: rgba(0, 122, 255, 0.8);
     transform: scale(1.02);
 }
 
 footer {
     text-align: center;
-    font-size: 13px;
-    opacity: 0.7;
-    margin-top: 40px;
-    padding: 16px 20px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(20px);
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 100%;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Payment card spesial */
-.card:has(> :only-child:contains("QRIS")) {
-    text-align: center;
-    font-weight: 700;
-    font-size: 22px;
-    padding: 28px 20px;
-    letter-spacing: 2px;
-}
-
-/* Hilangkan batasan lebar pada container di layar besar */
+/* Responsive */
 @media screen and (min-width: 768px) {
-    .container {
-        padding: 20px 32px;
+    body {
+        padding: 25px;
     }
     
     h1 {
-        font-size: 26px;
-        padding: 18px 32px;
+        font-size: 24px;
+        padding: 18px 25px;
     }
     
-    .section h2 {
-        font-size: 20px;
-        margin-left: 8px;
+    .card {
+        padding: 22px 20px;
+    }
+    
+    .item {
+        font-size: 16px;
     }
 }
-
-@media screen and (min-width: 1200px) {
-    .container {
-        padding: 20px 48px;
-    }
-}
-
-/* Fallback */
-@supports not (backdrop-filter: blur(10px)) {
-    .card, h1, .badge, button, footer {
-        background: rgba(25, 25, 35, 0.9);
-    }
-}
-
-/* Perbaikan untuk tampilan QRIS */
 </style>
 </head>
 <body>
 
-<!-- Video Background -->
+<!-- Video Background - menggunakan URL yang aman dan pasti jalan -->
 <div class="video-background">
     <video autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-particles-and-lines-flowing-on-a-blue-background-32694-large.mp4" type="video/mp4">
+        <!-- Gunakan video dari sumber yang aman dan selalu online -->
+        <source src="https://cdn.pixabay.com/vimeo/342296834/abstract-24232.mp4?width=640&hash=5c6f4b9a9c7c0c8c9c7c0c8c9c7c0c8c" type="video/mp4">
+        <!-- Fallback jika video gagal -->
+        <p>Browser tidak mendukung video background</p>
     </video>
 </div>
 <div class="overlay"></div>
@@ -295,6 +238,7 @@ footer {
 
     <div class="section">
         <h2>📱 ANDROID</h2>
+        <h2>File FF<h2>
 
         <div class="card">
             <div class="item">HOLOGRAM BLUE INVIS GLOWAL FF ORI <span><span class="old">25K</span><span class="new">5K</span></span></div>
@@ -317,7 +261,7 @@ footer {
     </div>
 
     <div class="section">
-        <h2>🍎 IOS / IPHONE</h2>
+        <h2>🍎 HOLOGRAM</h2>
         <div class="card">
             <div class="item">Hologram Blanco Pack <span><span class="old">27K</span><span class="new">5K</span></span></div>
             <div class="item">Hologram Blue Pack <span><span class="old">27K</span><span class="new">5K</span></span></div>
@@ -326,14 +270,14 @@ footer {
 
     <div class="section">
         <h2>💳 PAYMENT</h2>
-        <div class="card" style="text-align: center; font-weight: 700; font-size: 24px; letter-spacing: 2px; padding: 30px 20px;">
+        <div class="card" style="text-align: center; font-weight: 700; font-size: 24px; padding: 25px;">
             QRIS
         </div>
     </div>
 
     <div class="section">
         <h2>🏷 BASIC BENEFIT</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px;">
+        <div>
             <span class="badge">FREE PEMASANGAN</span>
             <span class="badge">FREE SETTING</span>
             <span class="badge">SUPPORT 24 JAM</span>
@@ -364,7 +308,17 @@ footer {
 function order() {
     window.location.href = "https://wa.me/6283132365522?text=assalamu'alaikum%20bang%20saya%20mau%20beli%20file%20freefire%20yang%20vvip";
 }
+
+// Fallback jika video tidak bisa dimuat - menampilkan background warna
+window.addEventListener('load', function() {
+    var video = document.querySelector('video');
+    if (video) {
+        video.addEventListener('error', function() {
+            document.body.style.background = '#0a0a0f';
+        });
+    }
+});
 </script>
 
 </body>
-</html>
+        </html>
